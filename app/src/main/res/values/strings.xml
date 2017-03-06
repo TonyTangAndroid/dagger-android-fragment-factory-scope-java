@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Java Scope &amp; FragmentFactory demo</string>
+    <string name="re_inflate">Re-Inflate</string>
+</resources>
