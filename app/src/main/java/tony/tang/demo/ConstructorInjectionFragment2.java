@@ -13,8 +13,11 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
+import dagger.Binds;
+import dagger.Module;
+import dagger.multibindings.IntoMap;
+import dep.FragmentKey;
 import dep.PrintableDependency;
-import tony.tang.demo.R;
 
 public class ConstructorInjectionFragment2 extends Fragment {
 
@@ -25,6 +28,7 @@ public class ConstructorInjectionFragment2 extends Fragment {
     ConstructorInjectionFragment2(Set<PrintableDependency> printableDependencies) {
         super(R.layout.fragment_dependencies);
         this.printableDependencies = printableDependencies;
+        System.out.println("ConstructorInjectionFragment2 size:" + printableDependencies.size());
 
     }
 
@@ -38,5 +42,14 @@ public class ConstructorInjectionFragment2 extends Fragment {
         TextView dependenciesView = view.findViewById(R.id.dependenciesView);
         dependenciesView.setText(printableDependencies
             .stream().map(Object::toString).sorted().collect(Collectors.joining("\n")));
+    }
+
+    @Module
+    abstract static class ModuleV2 {
+
+        @Binds
+        @IntoMap
+        @FragmentKey(ConstructorInjectionFragment2.class)
+        abstract Fragment bindConstructorInjectionFragment2(ConstructorInjectionFragment2 impl);
     }
 }

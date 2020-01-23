@@ -14,10 +14,10 @@ abstract class FragmentContributorModule {
     /**
      * This method will force Dagger to generate a [dagger.Subcomponent] for the activity's [dagger.Subcomponent],
      * which lets us inject [by.ve.demo.di.scopes.ActivityScope] and [FragmentScope] dependencies
-     * into [ScopedFragmentFactoryV1.FragmentProviders]. That allows [ScopedFragmentFactoryV1] to inject
+     * into [ScopedFragmentFactory.FragmentProviders]. That allows [ScopedFragmentFactory] to inject
      * scoped dependencies into the produced fragments.
      */
     @FragmentScope
-    @ContributesAndroidInjector(modules = {DependenciesBindingModule.class, FragmentsBindingModule.class})
-    abstract ScopedFragmentFactory.FragmentProviders contributeFragmentFactory();
+    @ContributesAndroidInjector(modules = {DependenciesBindingModule.class, FragmentInjectorModule.class})
+    abstract FragmentProviders contributeFragmentFactory();
 }

@@ -8,4 +8,4 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Scope
 @Retention(RUNTIME)
-@interface AppScope {}
+public @interface AppScope {}

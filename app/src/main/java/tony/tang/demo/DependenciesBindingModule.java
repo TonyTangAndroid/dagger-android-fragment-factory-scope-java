@@ -19,11 +19,6 @@ abstract class DependenciesBindingModule {
 
     @Binds
     @IntoSet
-    abstract PrintableDependency activityScopedDependency(ActivityScopedDependency unscopedDependency);
-
-
-    @Binds
-    @IntoSet
     abstract PrintableDependency FragmentScopedDependency(FragmentScopedDependency impl);
 
     @Binds
